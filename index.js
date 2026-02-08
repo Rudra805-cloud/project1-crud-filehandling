@@ -7,6 +7,15 @@ const PORT=8000;
 
 //middleware to load data from req and create a object and put in body
 app.use(express.urlencoded({extended :false}))
+
+//middle ware creation 
+app.use((req,res,next)=>{
+     fs.appendFile("./log.txt",`${Date.now()}:${req.method}:${req.path}`,(err)=>{
+        res.send("404")
+        next();
+     })
+     next();
+})
 //routes
 app.get("/api/users",(req,res)=>{
     return res.json(users);
