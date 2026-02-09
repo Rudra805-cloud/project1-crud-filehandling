@@ -16,3 +16,11 @@ app.delete("/api/users/:id",(req,res)=>{
     return res.send("status:pending")
 })
 */
+
+Http headers=>
+Http headers vo hote hai jo koi adress store karta like in latter transfer
+headers are req and res type both
+ res.setHeader("X-myName","Rudra");
+
+ headers are of two type built in and coutem headers
+ coutem headers we create for good pratice include X before declaring

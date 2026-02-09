@@ -8,6 +8,7 @@ const PORT=8000;
 //middleware to load data from req and create a object and put in body
 app.use(express.urlencoded({extended :false}))
 
+
 //middle ware creation 
 app.use((req,res,next)=>{
      fs.appendFile("./log.txt",`${Date.now()}:${req.method}:${req.path}`,(err)=>{
@@ -32,11 +33,14 @@ app.get("/users",(req,res)=>{
 
 
 app.get("/api/users/:id",(req,res)=>{
+   
      const id=Number(req.params.id)
     const user=users.find((user)=>user.id==id);
     if(!user){
        return res.status(404).send("User not found");
     }
+    //headres
+     res.setHeader("X-myName","Rudra");
    return res.send(user)
 })
 app.post("/api/users",(req,res)=>{
